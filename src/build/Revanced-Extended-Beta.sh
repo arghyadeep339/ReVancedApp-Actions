@@ -79,7 +79,7 @@ revanced_dl(){
 	# x86
 	get_patches_key "youtube-music-revanced-extended"
 	version="6.42.52"
-	get_apk "com.google.android.apps.youtube.music" "youtube-music-beta-android-7-x86 "youtube-music" "google-inc/youtube-music/youtube-music" "x86"
+	get_apk "com.google.android.apps.youtube.music" "youtube-music-beta-android-7-x86" "youtube-music" "google-inc/youtube-music/youtube-music" "x86"
 	patch "youtube-music-beta-android-7-x86" "revanced-extended" "inotia"
 	# x86_64
 	get_patches_key "youtube-music-revanced-extended"
