@@ -24,6 +24,7 @@ on:
           - 'Twitter Piko Stable'
           - 'Twitter Piko Beta'
           - 'Revanced Extended Android 6,7'
+          - 'RVX Android-6,7 arghya339'
           - 'Revanced Extended Android 5'
           - 'BiliRoamingM'
           - 'Dropped Patches - indrastorms'
@@ -251,6 +252,29 @@ jobs:
         id: release-rve67
         if: steps.check-gh-rve67.outputs.internet_error == '0'
         uses: ./.github/actions/release
+  patch_rve67_arghya339:
+    name: Patch RVX Android 6,7 arghya339
+    if: ${{ github.event.inputs.org == 'RVX Android-6,7 arghya339' || inputs.org == 'RVX Android-6,7 arghya339' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Preparing to patch
+        uses: ./.github/actions/preparing
+      - name: Check github connection
+        id: check-gh-rve67-arghya339
+        run: bash src/etc/connection.sh
+      - name: Patch apk
+        id: patch-rve67-arghya339
+        if: steps.check-gh-rve67-arghya339.outputs.internet_error == '0'
+        run: bash src/build/arghya339-Revanced-Extended-Android-6-7.sh
+      - name: Releasing APK files
+        id: release-rve67-arghya339
+        if: steps.check-gh-rve67-arghya339.outputs.internet_error == '0'
+        uses: ./.github/actions/release
+      - name: Re-run workflow if github connection not stable
+        if: always() && steps.patch-rve67-arghya339.outcome == 'skipped' || steps.release-rve67-arghya339.outcome == 'skipped' && env.retry_count < env.max_retries
+        uses: ./.github/actions/re-run        
   patch_rve5:
     name: Patch RVX Android 5
     if: ${{ github.event.inputs.org == 'Revanced Extended Android 5' || inputs.org == 'Revanced Extended Android 5' }}

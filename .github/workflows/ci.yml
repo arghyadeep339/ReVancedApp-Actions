@@ -61,6 +61,10 @@ jobs:
         id: check-rve67
         if: steps.check-gh.outputs.internet_error == '0'
         run: bash src/etc/ci.sh kitadai31/revanced-patches-android6-7 latest youtube-revanced-extended-android-6-7.apk
+      - name: Check new patch Revanced Extended For Android 6 & 7 forked by arghya339
+        id: check-rve67-arghya339
+        if: steps.check-gh.outputs.internet_error == '0'
+        run: bash src/etc/ci.sh arghya339/revanced-patches-android6-7 latest youtube-revanced-extended-android-6-7-arghya339.apk
       - name: Check new patch Revanced For Android 5
         id: check-rve5
         if: steps.check-gh.outputs.internet_error == '0'
@@ -106,6 +110,7 @@ jobs:
       check_twitter_piko_stable: ${{ steps.check-twitter-piko-stable.outputs.new_patch }}
       check_twitter_piko_beta: ${{ steps.check-twitter-piko-beta.outputs.new_patch }}
       check_rve67: ${{ steps.check-rve67.outputs.new_patch }}
+      check_rve67_arghya339: ${{ steps.check-rve67-arghya339.outputs.new_patch }}
       check_rve5: ${{ steps.check-rve5.outputs.new_patch }}
       check_BiliRoamingM: ${{ steps.check-BiliRoamingM.outputs.new_patch }}
 
@@ -179,6 +184,13 @@ jobs:
     uses: ./.github/workflows/manual-patch.yml
     with:
       org: "Revanced Extended Android 6,7"
+  Patch-RVX-For-Android-6-7-arghya339:
+    name: Patch RVX Android 6 & 7 arghya339
+    needs: check
+    if: ${{ needs.check.outputs.check_rve67_arghya339 == 1 }}
+    uses: ./.github/workflows/manual-patch.yml
+    with:
+      org: "RVX Android-6,7 arghya339"
   Patch-Revanced-Extended-For-Android-5:
     name: Patch RVX Android 5
     needs: check
