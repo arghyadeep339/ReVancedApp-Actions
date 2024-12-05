@@ -165,6 +165,26 @@ Download
 | ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
 | [Arm64-v8a](../../releases/download/all/youtube-music-arm64-v8a-revanced-extended.apk)     | [Arm64-v8a](../../releases/download/all/youtube-music-beta-arm64-v8a-revanced-extended.apk)     |
 | [Armeabi-v7a](../../releases/download/all/youtube-music-armeabi-v7a-revanced-extended.apk) | [Armeabi-v7a](../../releases/download/all/youtube-music-beta-armeabi-v7a-revanced-extended.apk) |
+| [x86](../../releases/download/all/youtube-music-x86-revanced-extended.apk)                 | [x86](../../releases/download/all/youtube-music-beta-x86-revanced-extended.apk)                 |
+| [x86_64](../../releases/download/all/youtube-music-x86_64-revanced-extended.apk)           | [x86_64](../../releases/download/all/youtube-music-beta-x86_64-revanced-extended.apk)           |
+
+### Revanced Extended For Android 7:
+
+| [Stable version](https://github.com/inotia00/revanced-patches/releases/latest)                       | [Beta version](https://github.com/inotia00/revanced-patches/releases)                                     |
+|------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| [Arm64-v8a](../../releases/download/all/youtube-music-android-7-arm64-v8a-revanced-extended.apk)     | [Arm64-v8a](../../releases/download/all/youtube-music-beta-android-7-arm64-v8a-revanced-extended.apk)     |
+| [Armeabi-v7a](../../releases/download/all/youtube-music-android-7-armeabi-v7a-revanced-extended.apk) | [Armeabi-v7a](../../releases/download/all/youtube-music-beta-android-7-armeabi-v7a-revanced-extended.apk) |
+| [x86](../../releases/download/all/youtube-music-android-7-x86-revanced-extended.apk)                 | [x86](../../releases/download/all/youtube-music-beta-android-7-x86-revanced-extended.apk)                 |
+| [x86_64](../../releases/download/all/youtube-music-android-7-x86_64-revanced-extended.apk)           | [x86_64](../../releases/download/all/youtube-music-beta-android-7-x86_64-revanced-extended.apk)           |
+
+### Revanced Extended For Android 5 & 6:
+
+| [Stable version](https://github.com/inotia00/revanced-patches/releases/latest)                         | [Beta version](https://github.com/inotia00/revanced-patches/releases)                                       |
+|--------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| [Arm64-v8a](../../releases/download/all/youtube-music-android-5-6-arm64-v8a-revanced-extended.apk)     | [Arm64-v8a](../../releases/download/all/youtube-music-beta-android-5-6-arm64-v8a-revanced-extended.apk)     |
+| [Armeabi-v7a](../../releases/download/all/youtube-music-android-5-6-armeabi-v7a-revanced-extended.apk) | [Armeabi-v7a](../../releases/download/all/youtube-music-beta-android-5-6-armeabi-v7a-revanced-extended.apk) |
+| [x86](../../releases/download/all/youtube-music-android-5-6-x86-revanced-extended.apk)                 | [x86](../../releases/download/all/youtube-music-beta-android-5-6-x86-revanced-extended.apk)                 |
+| [x86_64](../../releases/download/all/youtube-music-android-5-6-x86_64-revanced-extended.apk)           | [x86_64](../../releases/download/all/youtube-music-beta-android-5-6-x86_64-revanced-extended.apk)           |
 
 ### Revanced Extended forked by anddea:
 
