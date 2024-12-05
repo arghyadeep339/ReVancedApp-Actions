@@ -45,6 +45,10 @@ jobs:
         id: check-rve-beta
         if: steps.check-gh.outputs.internet_error == '0'
         run: bash src/etc/ci.sh inotia00/revanced-patches prerelease youtube-beta-revanced-extended.apk
+      - name: Check new patch Revanced Extended Alpha
+        id: check-rve-alpha
+        if: steps.check-gh.outputs.internet_error == '0'
+        run: bash src/etc/ci.sh inotia00/revanced-patches prerelease youtube-alpha-revanced-extended.apk
       - name: Check new patch Revanced Extended Reddit
         id: check-rve-reddit
         if: steps.check-gh.outputs.internet_error == '0'
@@ -156,6 +160,13 @@ jobs:
     uses: ./.github/workflows/manual-patch.yml
     with:
       org: "Revanced Extended Beta"
+  Patch-Revanced-Extended-Alpha:
+    name: Patch Revanced Extended Alpha
+    needs: check
+    if: ${{ needs.check.outputs.check_rve_alpha == 1 }}
+    uses: ./.github/workflows/manual-patch.yml
+    with:
+      org: "Revanced Extended Alpha"  
   Patch-Revanced-Extended-Reddit:
     name: Patch Revanced Extended Reddit
     needs: check

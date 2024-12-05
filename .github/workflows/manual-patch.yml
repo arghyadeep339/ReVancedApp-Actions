@@ -18,6 +18,7 @@ on:
           - 'Revanced Beta'
           - 'Revanced Extended'
           - 'Revanced Extended Beta'
+          - 'Revanced Extended Alpha'
           - 'Revanced Extended Reddit'
           - 'RVE-anddea-stable'
           - 'RVE-anddea-beta'
@@ -172,6 +173,29 @@ jobs:
         id: release-rve-beta
         if: steps.check-gh-rve-beta.outputs.internet_error == '0'
         uses: ./.github/actions/release
+  patch_rve_alpha:
+    name: Patch Revanced Extended Alpha
+    if: ${{ github.event.inputs.org == 'Revanced Extended Alpha' || inputs.org == 'Revanced Extended Alpha' }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        run: [1, 2, 3]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Preparing to patch
+        uses: ./.github/actions/preparing
+      - name: Check github connection
+        id: check-gh-rve-alpha
+        run: bash src/etc/connection.sh
+      - name: Patch apk
+        id: patch-rve-alpha
+        if: steps.check-gh-rve-alpha.outputs.internet_error == '0'
+        run: bash src/build/Revanced-Extended-Alpha.sh ${{ matrix.run }}
+      - name: Releasing APK files
+        id: release-rve-alpha
+        if: steps.check-gh-rve-alpha.outputs.internet_error == '0'
+        uses: ./.github/actions/release  
   patch_rve_reddit:
     name: Patch Revanced Extended Reddit
     if: ${{ github.event.inputs.org == 'Revanced Extended Reddit' || inputs.org == 'Revanced Extended Reddit' }}
