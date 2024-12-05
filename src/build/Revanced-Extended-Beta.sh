@@ -36,12 +36,12 @@ revanced_dl(){
 	# Patch YouTube Music Extended:
 	# Arm64-v8a
 	get_patches_key "youtube-music-revanced-extended"
-	get_apk "com.google.android.apps.youtube.music" "youtube-beta-music-arm64-v8a" "youtube-music" "google-inc/youtube-music/youtube-music" "arm64-v8a"
-	patch "youtube-beta-music-arm64-v8a" "revanced-extended" "inotia"
+	get_apk "com.google.android.apps.youtube.music" "youtube-music-beta-arm64-v8a" "youtube-music" "google-inc/youtube-music/youtube-music" "arm64-v8a"
+	patch "youtube-music-beta-arm64-v8a" "revanced-extended" "inotia"
 	# Armeabi-v7a
 	get_patches_key "youtube-music-revanced-extended"
-	get_apk "com.google.android.apps.youtube.music" "youtube-beta-music-armeabi-v7a" "youtube-music" "google-inc/youtube-music/youtube-music" "armeabi-v7a"
-	patch "youtube-beta-music-armeabi-v7a" "revanced-extended" "inotia"
+	get_apk "com.google.android.apps.youtube.music" "youtube-music-beta-armeabi-v7a" "youtube-music" "google-inc/youtube-music/youtube-music" "armeabi-v7a"
+	patch "youtube-music-beta-armeabi-v7a" "revanced-extended" "inotia"
 	# x86
 	get_patches_key "youtube-music-revanced-extended"
 	get_apk "com.google.android.apps.youtube.music" "youtube-music-beta-x86" "youtube-music" "google-inc/youtube-music/youtube-music" "x86"
