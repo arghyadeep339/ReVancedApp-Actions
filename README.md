@@ -396,6 +396,18 @@ Download
 </details>
 
 <details>
+  <summary>arghya339</summary>
+
+[Patches](https://github.com/arghya339/revanced-patches-android6-7) - [GPL-3.0](https://github.com/arghya339/revanced-patches-android6-7/blob/revanced-extended/LICENSE)
+
+[Integrations](https://github.com/arghya339/revanced-integrations) - [GPL-3.0](https://github.com/arghya339/revanced-integrations/blob/revanced-extended/LICENSE)
+
+[CLI](https://github.com/kitadai31/revanced-cli) - [GPL-3.0](https://github.com/kitadai31/revanced-cli/blob/main/LICENSE)
+
+[VancedMicroG](https://github.com/inotia00/VancedMicroG) - [Apache-2.0](https://github.com/inotia00/VancedMicroG/blob/master/LICENSE)
+</details>
+
+<details>
   <summary>d4n3436</summary>
 
 [Patches](https://github.com/d4n3436/revanced-patches-android5) - [GPL-3.0](https://github.com/d4n3436/revanced-patches-android5/blob/revanced-extended/LICENSE)
