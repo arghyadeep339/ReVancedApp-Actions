@@ -229,38 +229,67 @@ get_apk() {
 
 # Patching apps with Revanced CLI:
 patch() {
-	green_log "[+] Patching $1:"
-	if [ -f "./download/$1.apk" ]; then
-		local p b m ks a pu opt
-		if [ "$3" = inotia ]; then
-			p="patch " b="--patch-bundle *patch*.jar" m="--merge *integration*.apk " a="" ks="_ks" pu="--purge=true" f="--force=true" opt="--options=./src/options/$2.json "
-			echo "Patching with Revanced-cli inotia"
-		else
-			if [[ $(ls revanced-cli-*.jar) =~ revanced-cli-([0-9]+) ]]; then
-				num=${BASH_REMATCH[1]}
-				if [ $num -ge 5 ]; then
-					p="patch " b="-p *.rvp" m="" a="" ks="ks" pu="--purge=true" f="--force=true" opt=""
-					echo "Patching with Revanced-cli version 5+"
-				elif [ $num -eq 4 ]; then
-					p="patch " b="--patch-bundle *patch*.jar" m="--merge *integration*.apk " a="" ks="ks" pu="--purge=true" f="--force=true" opt="--options=./src/options/$2.json "
-					echo "Patching with Revanced-cli version 4"
-				elif [ $num -eq 3 ]; then
-					p="patch " b="--patch-bundle *patch*.jar" m="--merge *integration*.apk " a="" ks="_ks" pu="--purge=true" opt="--options=./src/options/$2.json "
-					echo "Patching with Revanced-cli version 3"
-				elif [ $num -eq 2 ]; then
-					p="" b="--bundle *patch*.jar" m="--merge *integration*.apk " a="--apk " ks="_ks" pu="--clean" opt="--options=./src/options/$2.json "
-					echo "Patching with Revanced-cli version 2"
-				fi
-			fi
-		fi
-		eval java -jar *cli*.jar $p$b $m$opt--out=./release/$1-$2.apk$excludePatches$includePatches --keystore=./src/$ks.keystore $pu $f $a./download/$1.apk
-  		unset version
-		unset excludePatches
-		unset includePatches
-	else 
-		red_log "[-] Not found $1.apk"
-		exit 1
-	fi
+    green_log "[+] Patching $1:"
+    if [ -f "./download/$1.apk" ]; then
+        local p b m ks pu f opt
+        if [ "$3" = inotia ]; then
+            p="patch "
+            b="-p *.rvp"  # Using the .rvp file for inotia's version
+            m=""          # Integration APK not required in ReVanced 5+
+            ks="_ks"      # Keystore remains the same
+            pu="--purge=true" 
+            f="--force=true" 
+            opt="--options=./src/options/$2.json " # Optional JSON for specific patch options
+            echo "Patching with ReVanced-cli (Inotia custom patches)"
+        else
+            if [[ $(ls revanced-cli-*.jar) =~ revanced-cli-([0-9]+) ]]; then
+                num=${BASH_REMATCH[1]}
+                if [ $num -ge 5 ]; then
+                    p="patch "
+                    b="-p *.rvp"  # New patch format for version 5+
+                    m=""
+                    ks="ks"
+                    pu="--purge=true"
+                    f="--force=true"
+                    opt=""  # No JSON options by default
+                    echo "Patching with ReVanced-cli version 5+"
+                elif [ $num -eq 4 ]; then
+                    p="patch "
+                    b="--patch-bundle *patch*.jar"
+                    m="--merge *integration*.apk "
+                    ks="ks"
+                    pu="--purge=true"
+                    f="--force=true"
+                    opt="--options=./src/options/$2.json "
+                    echo "Patching with ReVanced-cli version 4"
+                elif [ $num -eq 3 ]; then
+                    p="patch "
+                    b="--patch-bundle *patch*.jar"
+                    m="--merge *integration*.apk "
+                    ks="_ks"
+                    pu="--purge=true"
+                    opt="--options=./src/options/$2.json "
+                    echo "Patching with ReVanced-cli version 3"
+                elif [ $num -eq 2 ]; then
+                    p=""
+                    b="--bundle *patch*.jar"
+                    m="--merge *integration*.apk "
+                    a="--apk "
+                    ks="_ks"
+                    pu="--clean"
+                    opt="--options=./src/options/$2.json "
+                    echo "Patching with ReVanced-cli version 2"
+                fi
+            fi
+        fi
+        eval java -jar *cli*.jar $p$b $m$opt--out=./release/$1-$2.apk$excludePatches$includePatches --keystore=./src/$ks.keystore $pu $f $a./download/$1.apk
+        unset version
+        unset excludePatches
+        unset includePatches
+    else 
+        red_log "[-] Not found $1.apk"
+        exit 1
+    fi
 }
 
 #################################################
