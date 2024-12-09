@@ -61,9 +61,6 @@
     "key" : "checkGmsCore",
     "value" : true
   }, {
-    "key" : "disableGmsServiceBroker",
-    "value" : false
-  }, {
     "key" : "packageNameYouTube",
     "value" : "app.rvx.android.youtube"
   }, {
