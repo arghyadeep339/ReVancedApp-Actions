@@ -1,13 +1,13 @@
-Change package name|O-packageName="Default"
-Change version code|O-versionCode=2147483647
+Change package name|-OpackageName="Default"
+Change version code|-OversionCode=2147483647
 GmsCore support|-OgmsCoreVendorGroupId="com.mgoogle"
 Spoof Android device ID|-Oandroid-device-id="0011223344556677"
 Spoof client|-Oclient-id="yes"
-Custom theme|-ObackgroundColor="@android:color/black"|-ObackgroundColorSecondary="#ff282828"|-OaccentColor="#ff1ed760"|-OaccentColorPressed="#ff169c46"
-Custom branding|-OappName="YouTube ReVanced"|-OiconPath="branding/youtube/launcher/google_family"
-Change header|-Oheader="branding/youtube/header/google_family"
-Hide Shorts components|-OhideShortsAppShortcut=false|-OhideShortsWidget=false
-Theme|-OdarkThemeBackgroundColor="@android:color/black"|-OlightThemeBackgroundColor="@android:color/white"
+Custom theme|-ObackgroundColor="@android:color/black" -ObackgroundColorSecondary="#ff282828" -OaccentColor="#ff1ed760" -OaccentColorPressed="#ff169c46"
+Custom branding|-OappName="YouTube ReVanced" -OiconPath="ReVanced*Logo"
+Change header|-Oheader="revanced*borderless"
+Hide Shorts components|-OhideShortsAppShortcut=false -OhideShortsWidget=false
+Theme|-OdarkThemeBackgroundColor="@android:color/black" -OlightThemeBackgroundColor="@android:color/white"
 Predictive back gesture
 Change package name
 Remove share targets
