@@ -9,8 +9,9 @@ HTMLQ="./htmlq"
 #Setup APKEditor for install combine split apks
 wget -q -O ./APKEditor.jar https://github.com/REAndroid/APKEditor/releases/download/V1.4.1/APKEditor-1.4.1.jar
 APKEditor="./APKEditor.jar"
-#Setup apksigner for signed unsign patch apk
-APKSIGNER="./bin/apksigner.jar"
+# Set the correct path to apksigner.jar
+APKSIGNER_JAR="./bin/apksigner.jar"
+
 #################################################
 
 # Colored output logs
@@ -262,8 +263,30 @@ patch() {
 		red_log "[-] Not found $1.apk"
 		exit 1
 	fi
-	"$APKSIGNER" --ks ./ks.keystore --ks-key-alias ReVancedKey --ks-pass pass:123456 --key-pass pass:123456 --out ./release/$1-$2-signed.apk ./release/$1-$2.apk
-	fi
+}
+
+#################################################
+
+# Function to sign the APK with apksigner
+sign_apk() {
+    local unsigned_apk=./release/$1-$2.apk
+    local signed_apk=./release/$1-$2-signed.apk
+    local keystore=./ks.keystore
+    local keystore_password=123456
+    local key_alias=ReVancedKey
+    local key_password=123456
+
+    if [ ! -f "$unsigned_apk" ]; then
+        echo "Unsigned APK not found: $unsigned_apk"
+        exit 1
+    fi
+
+    echo "[+] Signing APK: $unsigned_apk"
+    java -jar "$APKSIGNER_JAR" sign --ks "$keystore" --ks-pass pass:"$keystore_password" \
+        --key-pass pass:"$key_password" --ks-key-alias "$key_alias" \
+        --out "$signed_apk" "$unsigned_apk" || { echo "Failed to sign APK"; exit 1; }
+
+    echo "[+] APK signed successfully: $signed_apk"
 }
 
 #################################################
