@@ -9,7 +9,8 @@ HTMLQ="./htmlq"
 #Setup APKEditor for install combine split apks
 wget -q -O ./APKEditor.jar https://github.com/REAndroid/APKEditor/releases/download/V1.4.1/APKEditor-1.4.1.jar
 APKEditor="./APKEditor.jar"
-
+#Setup apksigner for signed unsign patch apk
+APKSIGNER="./bin/apksigner.jar"
 #################################################
 
 # Colored output logs
@@ -253,13 +254,15 @@ patch() {
 				fi
 			fi
 		fi
-		eval java -jar *cli*.jar $p$b $m$opt--out=./release/$1-$2.apk$excludePatches$includePatches --keystore=./src/$ks.keystore $pu $f $a./download/$1.apk
+		eval java -jar *cli*.jar $p$b $m$opt--out=./release/$1-$2.apk$excludePatches$includePatches --unsigned $pu $f $a./download/$1.apk
   		unset version
 		unset excludePatches
 		unset includePatches
 	else 
 		red_log "[-] Not found $1.apk"
 		exit 1
+	fi
+	"$APKSIGNER" --ks ./ks.keystore --ks-key-alias ReVancedKey --ks-pass pass:123456 --key-pass pass:123456 --out ./release/$1-$2-signed.apk ./release/$1-$2.apk
 	fi
 }
 
